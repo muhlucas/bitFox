@@ -16,6 +16,18 @@ angular.module('app.routes', [])
     controller: 'pageCtrl'
   })
 
+      .state('flappybird', {
+    url: '/flappybird',
+    templateUrl: 'templates/flappybird.html',
+    controller: 'flappybirdCtrl'
+  })
+
+  .state('page2', {
+    url: '/page2',
+    templateUrl: 'templates/page2.html',
+    controller: 'page2Ctrl'
+  })
+
 $urlRouterProvider.otherwise('/page1')
 
   
