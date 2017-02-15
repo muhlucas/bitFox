@@ -5,10 +5,10 @@
       <p style="color:#000000;">{{currentQuestion}}</p>
     </div>
     <form id="page1-form2" class="list" ng-submit="submitForm()">
-      <ion-radio ng-value="0"  ng-model="settings.id" id="0">{{answer0}}</ion-radio>
-      <ion-radio ng-value="1"  ng-model="settings.id" id="1">{{answer1}}</ion-radio>
-      <ion-radio ng-value="2"  ng-model="settings.id" id="2">{{answer2}}</ion-radio>
-      <ion-radio ng-value="3"  ng-model="settings.id" id="3">{{answer3}}</ion-radio>
+      <ion-radio class="item item-text-wrap" ng-value="0"  ng-model="settings.id" id="0">A) {{answer0}}</ion-radio>
+      <ion-radio class="item item-text-wrap" ng-value="1"  ng-model="settings.id" id="1">B) {{answer1}}</ion-radio>
+      <ion-radio class="item item-text-wrap" ng-value="2"  ng-model="settings.id" id="2">C) {{answer2}}</ion-radio>
+      <ion-radio class="item item-text-wrap" ng-value="3"  ng-model="settings.id" id="3">D) {{answer3}}</ion-radio>
       <button id="page-button3" type="submit" class="button button-assertive  button-block">Responder</button>
     </form>
 <!--         <div class="row">
