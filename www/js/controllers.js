@@ -250,13 +250,14 @@ function ($scope, $stateParams, $location) {
         buttonText = "Proxima pergunta";
     }else{
         statusResposta = "Errou!";
+        currentScore = currentScore -1;
         if(currentScore>0){
-            currentScore = currentScore -1;
             window.localStorage.setItem("globalScore", currentScore);
             descResposta = "Voce perdeu um bitcoin por causa da resposta errada. Seu saldo agora é de: "+ currentScore + "b$";
             buttonText = "Tentar novamente";
 
         }else{
+            window.localStorage.setItem("globalScore", 0);
             descResposta = "Você não tem mais bitcoins! Por favor minere mais com o flappybit para dar continuidade ao curso.";
             buttonText = "Mineirar";
             goToQuestionPage = false;
