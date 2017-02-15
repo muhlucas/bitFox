@@ -30,7 +30,7 @@ $scope.showPopup = function() {
          
             //don't allow the user to close unless he enters wifi password
             e.preventDefault();
-          	$location.path('/page2');
+          	$location.path('/homeCourse');
           	myPopup.close();
         }
       }
@@ -171,6 +171,16 @@ game.state.start('main');
 
 
 .controller('page2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+
+}])
+ 
+
+
+.controller('homeCourseCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {

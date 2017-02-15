@@ -28,6 +28,13 @@ angular.module('app.routes', [])
     controller: 'page2Ctrl'
   })
 
+
+  .state('homeCourse', {
+    url: '/homeCourse',
+    templateUrl: 'templates/homeCourse.html',
+    controller: 'homeCourseCtrl'
+  })  
+
 $urlRouterProvider.otherwise('/page1')
 
   
