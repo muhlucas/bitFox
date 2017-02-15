@@ -178,10 +178,10 @@ game.state.start('main');
 }])
 
 
-.controller('page2Ctrl', ['$scope', '$stateParams', '$location', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page2Ctrl', ['$scope', '$stateParams', '$location', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $location) {
+function ($scope, $stateParams, $location, $ionicPopup) {
 
 
     $scope.bitcoinsTotal = window.localStorage.getItem("globalScore") + ' b$';
@@ -199,11 +199,40 @@ function ($scope, $stateParams, $location) {
     $scope.answer2 = currentClass["answers"][2];
     $scope.answer3 = currentClass["answers"][3];
 
+
+$scope.showPopupAlert = function() {
+
+  // An elaborate, custom popup
+  var myPopup = $ionicPopup.show({
+    template: 'Selecione uma alternativa',
+    title: 'Atenção!',
+    scope: $scope,
+    buttons: [
+      {
+        text: '<b>Ok</b>',
+        type: 'button-assertive',
+        onTap: function(e) {
+         
+            //don't allow the user to close unless he enters wifi password
+            e.preventDefault();
+            myPopup.close();
+        }
+      }
+    ]
+  });
+
+ 
+
+ };
+
+
+
+
     $scope.settings = {};
       $scope.submitForm = function(){
 
         if($scope.settings.id==undefined){
-            alert("selecione uma alternativa");
+            $scope.showPopupAlert();
         }else{
             if($scope.settings.id != currentClass["rightAnswer"]){
                 window.localStorage.setItem("respostaCerta", 0);
@@ -230,10 +259,10 @@ function ($scope, $stateParams, $location) {
 }])
  
 
-.controller('acertoPageCtrl', ['$scope', '$stateParams', '$location', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('acertoPageCtrl', ['$scope', '$stateParams', '$location','$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $location) {
+function ($scope, $stateParams, $location, $ionicPopup) {
 
 
     var flag = parseInt(window.localStorage.getItem("respostaCerta"));
