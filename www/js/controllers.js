@@ -5,6 +5,8 @@ angular.module('app.controllers', [])
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
+    window.localStorage.setItem("globalScore", 0);
+
 
 }])
 
@@ -16,10 +18,12 @@ function ($scope, $stateParams, $ionicPopup, $timeout, $location) {
 
 $scope.showPopup = function() {
   $scope.data = {};
+  var scoreNow =  window.localStorage.getItem("globalScore");
+
 
   // An elaborate, custom popup
   var myPopup = $ionicPopup.show({
-    template: 'Voce ganhou X bitcoins',
+    template: 'Voce ganhou '+ scoreNow + ' bitcoins',
     title: 'Fim da coleta!',
     scope: $scope,
     buttons: [
@@ -152,13 +156,17 @@ var mainState = {
 
     addRowOfPipes: function() {
         var hole = Math.floor(Math.random()*5)+1;
+        var aux = 0;
 
         for (var i = 0; i < 8; i++)
             if (i != hole && i != hole +1)
                 this.addOnePipe(400, i*60+10);
 
         this.score += 1;
-        this.labelScore.text = this.score;
+        // RDNS
+        aux = parseInt(window.localStorage.getItem("globalScore")) + 1;
+        window.localStorage.setItem("globalScore", aux);
+        this.labelScore.text = this.score + " b$";
     },
 };
 
@@ -184,6 +192,19 @@ function ($scope, $stateParams) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
+
+    // var div = document.getElementById('bitcoinsTotal');
+
+    // div.innerHTML = window.localStorage.getItem("globalScore") + ' b$';
+    $scope.bitcoinsTotal = window.localStorage.getItem("globalScore") + ' b$';
+    var allCourses = JSON.parse(window.localStorage.getItem("courses"));
+    var currentProgress = JSON.parse(window.localStorage.getItem("progress"));
+    var currentCourse = allCourses[currentProgress["course"]];
+    console.log(allCourses);
+    $scope.allCourses = allCourses;
+    $scope.className = currentCourse["name"];
+    $scope.short_description = currentCourse["short_description"];
+    // this.bitcoinsTotal  = window.localStorage.getItem("globalScore") + ' b$';
 
 
 }])

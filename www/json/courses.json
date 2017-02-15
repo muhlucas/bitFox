@@ -1,0 +1,163 @@
+var courses =  [
+
+    {
+      "name": "Bitcoin 1",
+      "summary": "Aprenda o be-a-ba de bitcoin",
+      "level": 0,
+      "price": 1,
+      "img": "img/opengraph.png",
+      "short_description": "Curso básico de bitcoin e aplicações",
+      "description": "Curso básico de bitcoin e aplicações",
+      "questions": [
+        {
+          "question": "O que é um Endereço Bitcoin?",
+          "rightAnswer": 1,
+          "answers": [
+            "O nome do estabelecimento em que você compra bitcoins",
+            "O número que você informa a outras pessoas para que elas possam depositar em sua carteira Bitcoin",
+            "O seu endereço residencial",
+            "o local onde todas as bitcoins são armazenadas"
+          ]
+        },
+        {
+          "question": "Qual dessas imagens se parece mais com um Endereço Bitcoin?",
+          "rightAnswer": 0,
+          "answers": [
+            "13h1DP2Boo9TAsenphroACxhNy7pGxDYXd",
+            "13reft",
+            "@#$%ˆ*&ˆ$%@%&*(@!:\"$%ˆ&&$@#*˜!_+",
+            "bit@hotmail.com"
+          ]
+        },
+        {
+          "question": "Quem criou o bitcoin?",
+          "rightAnswer": 3,
+          "answers": [
+            "Uma mulher",
+            "Um homem",
+            "Um grupo de pessoas",
+            "Não se sabe se foi uma pessoa ou mais"
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bitcoin 2",
+      "summary": "Continue aprendendo sobre bitcoin",
+      "level": 1,
+      "price": 1,
+      "img": "img/avancadoBitcoin.jpg",
+      "short_description": "Curso avancado de bitcoin e aplicações",
+      "description": "Curso avancado de bitcoin e aplicações",
+      "questions": [
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Block Chain 1",
+      "summary": "Aprenda o basico de blockchain",
+      "level": 2,
+      "price": 1,
+      "img": "img/blockchain.png",
+      "short_description": "Curso basico de blockchain",
+      "description": "Curso basico de blockchain",
+      "questions": [
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "rightAnswer": 0,
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ]
+    }
+    
+
+    
+ 
+
+
+
+  ]

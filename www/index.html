@@ -59,7 +59,14 @@
     <script src="js/directives.js"></script>
      
     <script src="js/services.js"></script>
-    
+    <script src="json/courses.json"></script>
+    <script>
+      var progress = {"course":0, "class":0};
+      window.localStorage.setItem("courses", JSON.stringify(courses));
+      window.localStorage.setItem("progress", JSON.stringify(progress));
+      var test = JSON.parse(window.localStorage.getItem("courses"));
+      console.log(test[0]["questions"][2]["answers"][0]);
+    </script>
 
     <!-- Only required for Tab projects w/ pages in multiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
