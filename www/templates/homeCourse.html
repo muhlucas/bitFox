@@ -34,7 +34,7 @@
     <div class="spacer" style="width: 320px; height: 25px;"></div>
     <ion-list id="homeCourse-list5">
     <div ng-repeat="c in allCourses">
-      <ion-item class="item-thumbnail-left item-icon-right" id="{{c.level}}">
+      <ion-item class="item-thumbnail-left item-icon-right" id="{{c.level}}" ng-click="courseManager({{c.level}})">
         <img src="{{c.img}}">
         <h2>{{c.name}}  -  {{c.price}}b$</h2>
         <p style="white-space:normal;">{{c.short_description}}</p>

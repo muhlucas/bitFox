@@ -1,20 +1,21 @@
 <ion-view title="" hide-nav-bar="true" id="page2">
   <ion-content padding="true" class="manual-ios-statusbar-padding">
-    <h4 id="page1-heading1" style="color:#000000;text-align:center;">Pergunta de 1 milhao de dolares</h4>
+    <h4 id="page1-heading1" style="color:#000000;text-align:center;">curso de {{currentCourse}}</h4>
     <div id="page1-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
-      <p style="color:#000000;">Quando voce vai compra bitcoin, no que voce pensa hein seu arrombado?</p>
+      <p style="color:#000000;">{{currentQuestion}}</p>
     </div>
-    <form id="page1-form2" class="list">
-      <ion-radio id="page1-radio2">Opcao 1?</ion-radio>
-      <ion-radio id="page1-radio3">Opcao 2</ion-radio>
-      <ion-radio id="page1-radio4">Opcao 3</ion-radio>
-      <ion-radio id="page1-radio5">Opcao 4</ion-radio>
+    <form id="page1-form2" class="list" ng-submit="submitForm()">
+      <ion-radio ng-value="0"  ng-model="settings.id" id="0">{{answer0}}</ion-radio>
+      <ion-radio ng-value="1"  ng-model="settings.id" id="1">{{answer1}}</ion-radio>
+      <ion-radio ng-value="2"  ng-model="settings.id" id="2">{{answer2}}</ion-radio>
+      <ion-radio ng-value="3"  ng-model="settings.id" id="3">{{answer3}}</ion-radio>
+      <button id="page-button3" type="submit" class="button button-assertive  button-block">Responder</button>
     </form>
-        <div class="row">
+<!--         <div class="row">
       <div class="col col-33"></div>
       <div class="col">
         <button id="page-button3" class="button button-assertive  button-block">Responder</button>
       </div>
-      <div class="col col-33"></div>
+      <div class="col col-33"></div> -->
   </ion-content>
 </ion-view>

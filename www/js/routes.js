@@ -17,17 +17,25 @@ angular.module('app.routes', [])
   })
 
       .state('flappybird', {
+    cache: false,
     url: '/flappybird',
     templateUrl: 'templates/flappybird.html',
     controller: 'flappybirdCtrl'
   })
 
   .state('page2', {
+    cache: false,
     url: '/page2',
     templateUrl: 'templates/page2.html',
     controller: 'page2Ctrl'
   })
 
+  .state('acertoPage', {
+    cache: false,
+    url: '/acertoPage',
+    templateUrl: 'templates/acertoPage.html',
+    controller: 'acertoPageCtrl'
+  })
 
   .state('homeCourse', {
     url: '/homeCourse',

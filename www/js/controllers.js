@@ -178,20 +178,121 @@ game.state.start('main');
 }])
 
 
-.controller('page2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('page2Ctrl', ['$scope', '$stateParams', '$location', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $location) {
+
+
+    $scope.bitcoinsTotal = window.localStorage.getItem("globalScore") + ' b$';
+    var allCourses = JSON.parse(window.localStorage.getItem("courses"));
+    var currentProgress = JSON.parse(window.localStorage.getItem("progress"));
+    var currentCourse = allCourses[currentProgress["course"]];
+    var currentClass = currentCourse["questions"][currentProgress["class"]];
+    
+    $scope.currentCourse = currentCourse["name"];
+    $scope.currentQuestion = currentClass["question"];
+    $scope.allAnswers = currentClass["answers"];
+    console.log(currentClass);
+    $scope.answer0 = currentClass["answers"][0];
+    $scope.answer1 = currentClass["answers"][1];
+    $scope.answer2 = currentClass["answers"][2];
+    $scope.answer3 = currentClass["answers"][3];
+
+    $scope.settings = {};
+      $scope.submitForm = function(){
+
+        if($scope.settings.id==undefined){
+            alert("selecione uma alternativa");
+        }else{
+            if($scope.settings.id != currentClass["rightAnswer"]){
+                window.localStorage.setItem("respostaCerta", 0);
+                $location.path('/acertoPage');
+            }else{
+                
+                currentProgress["class"] +=1;
+                window.localStorage.setItem("progress", JSON.stringify(currentProgress));
+                var test = JSON.parse(window.localStorage.getItem("progress"));
+                console.log(test);
+                window.localStorage.setItem("respostaCerta", 1);
+                // window.location.reload(true);
+                 $location.path('/acertoPage');
+
+            }
+        }
+
+       
+   };
+
+
 
 
 }])
  
 
-
-.controller('homeCourseCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('acertoPageCtrl', ['$scope', '$stateParams', '$location', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $location) {
+
+
+    var flag = parseInt(window.localStorage.getItem("respostaCerta"));
+    var goToQuestionPage = true;
+    var currentScore = parseInt(window.localStorage.getItem("globalScore")); 
+    var statusResposta ="";
+    var descResposta ="";
+    var buttonText ="";
+    if(flag==1){
+        statusResposta = "Acertou!";
+        currentScore +=1;
+        window.localStorage.setItem("globalScore", currentScore);
+        descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
+        buttonText = "Proxima pergunta";
+    }else{
+        statusResposta = "Errou!";
+        if(currentScore>0){
+            currentScore = currentScore -1;
+            window.localStorage.setItem("globalScore", currentScore);
+            descResposta = "Voce perdeu um bitcoin por causa da resposta errada. Seu saldo agora é de: "+ currentScore + "b$";
+            buttonText = "Tentar novamente";
+
+        }else{
+            descResposta = "Você não tem mais bitcoins! Por favor minere mais com o flappybit para dar continuidade ao curso.";
+            buttonText = "Mineirar";
+            goToQuestionPage = false;
+        }
+    }
+
+    $scope.statusResposta = statusResposta;
+    $scope.descResposta = descResposta;
+    $scope.buttonText = buttonText;
+
+
+    
+
+
+        $scope.nextQuestion = function(){
+
+            if(goToQuestionPage){
+                $location.path('/page2');
+            }else{
+                $location.path('/flappybird');
+            }
+            
+         
+      }
+
+
+
+}]) 
+
+
+.controller('homeCourseCtrl', ['$scope', '$stateParams','$ionicPopup', '$location',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $ionicPopup, $location) {
+
+
 
     // var div = document.getElementById('bitcoinsTotal');
 
@@ -205,6 +306,44 @@ function ($scope, $stateParams) {
     $scope.className = currentCourse["name"];
     $scope.short_description = currentCourse["short_description"];
     // this.bitcoinsTotal  = window.localStorage.getItem("globalScore") + ' b$';
+
+$scope.showPopupCourse = function() {
+
+  // An elaborate, custom popup
+  var myPopup = $ionicPopup.show({
+    template: 'Você hoje esta no level ' + currentProgress["course"] + ', aula ' + currentProgress["class"],
+    title: 'Faça as aulas anteriores! ',
+    scope: $scope,
+    buttons: [
+      {
+        text: '<b>Ok</b>',
+        type: 'button-assertive',
+        onTap: function(e) {
+         
+            //don't allow the user to close unless he enters wifi password
+            e.preventDefault();
+            myPopup.close();
+        }
+      }
+    ]
+  });
+
+ 
+
+ };
+
+
+        $scope.courseManager = function(i){
+        
+        console.log(i);
+        if(currentProgress["course"] != i){
+            $scope.showPopupCourse();
+        }else{
+            $location.path('/page2');
+
+        }
+         
+      }
 
 
 }])
