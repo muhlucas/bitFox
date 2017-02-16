@@ -10,63 +10,33 @@ var courses =  [
       "description": "Curso básico de bitcoin e aplicações",
       "questions": [
         {
-          "question": "O que é um Endereço Bitcoin?",
-          "rightAnswer": 1,
-          "answers": [
-            "O nome do estabelecimento em que você compra bitcoins",
-            "O número que você informa a outras pessoas para que elas possam depositar em sua carteira Bitcoin",
-            "O seu endereço residencial",
-            "o local onde todas as bitcoins são armazenadas"
-          ]
-        },
-        {
-          "question": "Qual dessas imagens se parece mais com um Endereço Bitcoin?",
-          "rightAnswer": 0,
-          "answers": [
-            "13h1DP2Boo9TAsenphroACxhNy7pGxDYXd",
-            "13reft",
-            "@#$%ˆ*&ˆ$%@%&*(@!:\"$%ˆ&&$@#*˜!_+",
-            "bit@hotmail.com"
-          ]
-        },
-        {
-          "question": "Quem criou o bitcoin?",
+          "question": "Qual é o codinome do criador do bitcoin?",
           "rightAnswer": 3,
           "answers": [
-            "Uma mulher",
-            "Um homem",
-            "Um grupo de pessoas",
-            "Não se sabe se foi uma pessoa ou mais"
+            "João Paulo",
+            "Mijo Nomuro",
+            "Nakara Sakata",
+            "Satoshi Nakamoto"
           ]
         },
         {
-          "question": "",
+          "question": "Qual é o número máximo de bitcoins que podem ser criados?",
           "rightAnswer": 0,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "21 milhões",
+            "10 milhões",
+            "15 milhões",
+            "Indefinido"
           ]
         },
         {
-          "question": "",
-          "rightAnswer": 0,
+          "question": "Qual ano possivelmente foi emitidas as primeiras bitcoins?",
+          "rightAnswer": 2,
           "answers": [
-            "",
-            "",
-            "",
-            ""
-          ]
-        },
-        {
-          "question": "",
-          "rightAnswer": 0,
-          "answers": [
-            "",
-            "",
-            "",
-            ""
+            2007,
+            2008,
+            2009,
+            2010
           ]
         }
       ]
@@ -81,33 +51,33 @@ var courses =  [
       "description": "Curso avancado de bitcoin e aplicações",
       "questions": [
         {
-          "question": "",
-          "rightAnswer": 0,
+          "question": "Como é conhecido o processo de criação de novos bitcoins popularmente?",
+          "rightAnswer": 2,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "Abastecimento",
+            "Encontrando",
+            "Mineração",
+            "Peneiração"
           ]
         },
         {
-          "question": "",
-          "rightAnswer": 0,
+          "question": "Qual item a seguir é popularmente usado para armazenar bitcoins?",
+          "rightAnswer": 3,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "Caixa",
+            "Sacola",
+            "Mochila",
+            "Carteira"
           ]
         },
         {
-          "question": "",
+          "question": "Qual dessas imagens se parece mais com um Endereço Bitcoin?",
           "rightAnswer": 0,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "13h1DP2Boo9TAsenphroACxhNy7pGxDYXd ",
+            "13reft",
+            "@#$%ˆ*&ˆ$%@%&*(@!:\"$%ˆ&&$@#*˜!_+",
+            "bit@hotmail.com"
           ]
         }
       ]
@@ -122,38 +92,38 @@ var courses =  [
       "description": "Curso basico de blockchain",
       "questions": [
         {
-          "question": "",
+          "question": "Qual a finalidade do Blockchain?",
           "rightAnswer": 0,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "Registrar os movimentos de todos os bitcoins já gerados",
+            "Transacionar os bitcoins",
+            "Guardar os bitcoins em um local seguro",
+            "Mineirar os bitcoins de forma mais rápida"
           ]
         },
         {
-          "question": "",
-          "rightAnswer": 0,
+          "question": "Como é regulado o preço de um bitcoin?",
+          "rightAnswer": 1,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "O banco central de cada país determina o valor",
+            "Por oferta e demanda: quanto mais gente querendo comprar, mais valorizado fica o bitcoin",
+            "O criador do Bitcoin determinou um valor para cada bitcoin e ele nunca será alterado",
+            "Através do conselho de bitcoiners elegidos pela sociedade"
           ]
         },
         {
-          "question": "",
-          "rightAnswer": 0,
+          "question": "O que é um Endereço Bitcoin?",
+          "rightAnswer": 1,
           "answers": [
-            "",
-            "",
-            "",
-            ""
+            "O nome do estabelecimento em que você compra bitcoins",
+            "O número que você informa a outras pessoas para que elas possam depositar em sua carteira Bitcoin",
+            "O seu endereço residencial",
+            "o local onde todas as bitcoins são armazenadas"
           ]
         }
       ]
     }
-    
+ 
 
     
  
