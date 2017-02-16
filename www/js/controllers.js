@@ -385,6 +385,24 @@ function ($scope, $stateParams, $ionicPopup, $location) {
     var currentProgress = JSON.parse(window.localStorage.getItem("progress"));
     var currentCourse = allCourses[currentProgress["course"]];
     console.log(allCourses);
+
+    for(var i = 0; i < allCourses.length; i++){
+
+        if (i < currentProgress["course"]){
+            allCourses[i]["icon"] = "icon ion-android-done-all";
+        }
+        if (i == currentProgress["course"]){
+            allCourses[i]["icon"] = "icon ion-android-arrow-dropright";
+        }
+        if (i > currentProgress["course"]){
+            allCourses[i]["icon"] = "icon ion-android-lock";
+        }
+
+        
+    }
+
+
+
     $scope.allCourses = allCourses;
     $scope.className = currentCourse["name"];
     $scope.short_description = currentCourse["short_description"];
