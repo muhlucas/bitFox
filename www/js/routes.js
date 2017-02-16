@@ -11,6 +11,7 @@ angular.module('app.routes', [])
   
 
       .state('page', {
+    cache: false,
     url: '/page1',
     templateUrl: 'templates/page.html',
     controller: 'pageCtrl'
@@ -38,6 +39,7 @@ angular.module('app.routes', [])
   })
 
   .state('homeCourse', {
+    cache: false,
     url: '/homeCourse',
     templateUrl: 'templates/homeCourse.html',
     controller: 'homeCourseCtrl'

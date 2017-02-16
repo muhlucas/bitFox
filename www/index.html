@@ -62,13 +62,21 @@
     <script src="json/courses.json"></script>
     <script>
       var progress = {"course":0, "class":0};
+      for(var i = 0; i < courses.length; i++){
+        courses[i]["numberOfQuestions"] = courses[i]["questions"].length;
+      }
+      window.localStorage.setItem("indicacaoFinalDeCurso", 0);
       window.localStorage.setItem("courses", JSON.stringify(courses));
       window.localStorage.setItem("progress", JSON.stringify(progress));
-      var test = JSON.parse(window.localStorage.getItem("courses"));
-      console.log(test[0]["questions"][2]["answers"][0]);
+      // var test = JSON.parse(window.localStorage.getItem("courses"));
+      // console.log(test[0]["questions"][2]["answers"][0]);
+      
+
+      
+      console.log(courses);
     </script>
 
-    <!-- Only required for Tab projects w/ pages in multiple tabs 
+    <!-- Only required for Tab projects w/ pages in mltiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
 

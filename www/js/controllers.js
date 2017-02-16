@@ -238,12 +238,36 @@ $scope.showPopupAlert = function() {
                 window.localStorage.setItem("respostaCerta", 0);
                 $location.path('/acertoPage');
             }else{
+                var indProgClass = currentProgress["class"];
+                var indProgCourse = currentProgress["course"];
+
+                if(indProgClass == allCourses[indProgCourse].numberOfQuestions -1){
+                    if(indProgCourse == allCourses.length - 1){
+                        console.log(indProgCourse);
+                        console.log(allCourses.length);
+
+                        window.localStorage.setItem("respostaCerta", 1);
+                        window.localStorage.setItem("indicacaoFinalDeCurso", 1);
+
+                    }else{
+                        
+                        currentProgress["course"] +=1;
+                        currentProgress["class"] = 0;
+                        window.localStorage.setItem("progress", JSON.stringify(currentProgress));
+                        window.localStorage.setItem("respostaCerta", 1);
+
+
+                    }
+
+                    
+                }else{
+                    currentProgress["class"] +=1;
+                    window.localStorage.setItem("progress", JSON.stringify(currentProgress));
+                    window.localStorage.setItem("respostaCerta", 1);    
+                }
                 
-                currentProgress["class"] +=1;
-                window.localStorage.setItem("progress", JSON.stringify(currentProgress));
-                var test = JSON.parse(window.localStorage.getItem("progress"));
-                console.log(test);
-                window.localStorage.setItem("respostaCerta", 1);
+                
+
                 // window.location.reload(true);
                  $location.path('/acertoPage');
 
@@ -266,17 +290,31 @@ function ($scope, $stateParams, $location, $ionicPopup) {
 
 
     var flag = parseInt(window.localStorage.getItem("respostaCerta"));
+    var flagFimCurso = parseInt(window.localStorage.getItem("indicacaoFinalDeCurso"));
+    console.log(flagFimCurso);
     var goToQuestionPage = true;
     var currentScore = parseInt(window.localStorage.getItem("globalScore")); 
     var statusResposta ="";
     var descResposta ="";
     var buttonText ="";
     if(flag==1){
-        statusResposta = "Acertou!";
-        currentScore +=1;
-        window.localStorage.setItem("globalScore", currentScore);
-        descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
-        buttonText = "Proxima pergunta";
+
+        if(flagFimCurso == 1){
+            statusResposta = "Fim do curso!";
+            descResposta = "Parabéns! Você concluiu com sucesso o curso de bitcoin! Pronto para abrir sua conta na foxbit agora?";
+            buttonText = "Voltar ao começo";
+            var progress = {"course":0, "class":0};
+            currentScore = 0;
+            window.localStorage.setItem("globalScore", currentScore);
+            window.localStorage.setItem("progress", JSON.stringify(progress));
+        }else{
+            statusResposta = "Acertou!";
+            currentScore +=1;
+            window.localStorage.setItem("globalScore", currentScore);
+            descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
+            buttonText = "Proxima pergunta";
+        }
+
     }else{
         statusResposta = "Errou!";
         currentScore = currentScore -1;
@@ -304,7 +342,13 @@ function ($scope, $stateParams, $location, $ionicPopup) {
         $scope.nextQuestion = function(){
 
             if(goToQuestionPage){
-                $location.path('/page2');
+                if(flagFimCurso == 1){
+                    window.localStorage.setItem("indicacaoFinalDeCurso", 0);
+                    $location.path('/page');
+                }else{
+                    $location.path('/page2');    
+                }
+                
             }else{
                 $location.path('/flappybird');
             }
@@ -365,7 +409,6 @@ $scope.showPopupCourse = function() {
 
         $scope.courseManager = function(i){
         
-        console.log(i);
         if(currentProgress["course"] != i){
             $scope.showPopupCourse();
         }else{
