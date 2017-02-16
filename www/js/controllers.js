@@ -64,6 +64,7 @@ var mainState = {
         // Load the jump sound
         game.load.audio('jump', 'assets/jump.wav');
 
+        // game.load.image('jumpbutton', 'assets/bit.png');
         game.load.image('jumpbutton', 'assets/jump.png');
     },
 
@@ -82,6 +83,8 @@ var mainState = {
         // New anchor position
         this.bird.anchor.setTo(-0.2, 0.5);
 
+        // RDNS
+        // var jumpbutton = game.add.button(0, 0, 'jumpbutton', this.jump, this, 2, 1, 0);
         var jumpbutton = game.add.button(game.world.centerX - 40, 420, 'jumpbutton', this.jump, this, 2, 1, 0);
 
         this.score = 0;
@@ -416,6 +419,10 @@ $scope.showPopupCourse = function() {
 
         }
          
+      }
+
+        $scope.goBackToCourse = function(){
+            $location.path('/page2');    
       }
 
 
