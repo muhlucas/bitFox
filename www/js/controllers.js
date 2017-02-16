@@ -300,6 +300,8 @@ function ($scope, $stateParams, $location, $ionicPopup) {
     var statusResposta ="";
     var descResposta ="";
     var buttonText ="";
+    var imageResp = "";
+    var sizeImage = 0;
     if(flag==1){
 
         if(flagFimCurso == 1){
@@ -308,6 +310,7 @@ function ($scope, $stateParams, $location, $ionicPopup) {
             buttonText = "Voltar ao começo";
             var progress = {"course":0, "class":0};
             currentScore = 0;
+            imageResp = "img/certified.png";
             window.localStorage.setItem("globalScore", currentScore);
             window.localStorage.setItem("progress", JSON.stringify(progress));
         }else{
@@ -316,6 +319,7 @@ function ($scope, $stateParams, $location, $ionicPopup) {
             window.localStorage.setItem("globalScore", currentScore);
             descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
             buttonText = "Proxima pergunta";
+            imageResp = "img/acertou_bitcoin.png";
         }
 
     }else{
@@ -325,19 +329,21 @@ function ($scope, $stateParams, $location, $ionicPopup) {
             window.localStorage.setItem("globalScore", currentScore);
             descResposta = "Voce perdeu um bitcoin por causa da resposta errada. Seu saldo agora é de: "+ currentScore + "b$";
             buttonText = "Tentar novamente";
+            imageResp = "img/errou_bitcoin.png";
 
         }else{
             window.localStorage.setItem("globalScore", 0);
             descResposta = "Você não tem mais bitcoins! Por favor minere mais com o flappybit para dar continuidade ao curso.";
             buttonText = "Mineirar";
             goToQuestionPage = false;
+            imageResp = "img/mining_bitcoin.png";
         }
     }
 
     $scope.statusResposta = statusResposta;
     $scope.descResposta = descResposta;
     $scope.buttonText = buttonText;
-
+    $scope.imageResp = imageResp;
 
     
 
