@@ -66,6 +66,7 @@
         courses[i]["numberOfQuestions"] = courses[i]["questions"].length;
       }
       window.localStorage.setItem("indicacaoFinalDeCurso", 0);
+      window.localStorage.setItem("goToHomeCoursePage", 0);
       window.localStorage.setItem("courses", JSON.stringify(courses));
       window.localStorage.setItem("progress", JSON.stringify(progress));
       // var test = JSON.parse(window.localStorage.getItem("courses"));

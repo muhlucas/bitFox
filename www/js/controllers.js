@@ -256,8 +256,10 @@ $scope.showPopupAlert = function() {
                         
                         currentProgress["course"] +=1;
                         currentProgress["class"] = 0;
+                        
                         window.localStorage.setItem("progress", JSON.stringify(currentProgress));
                         window.localStorage.setItem("respostaCerta", 1);
+                        window.localStorage.setItem("goToHomeCoursePage", 1);
 
 
                     }
@@ -296,6 +298,7 @@ function ($scope, $stateParams, $location, $ionicPopup) {
     var flagFimCurso = parseInt(window.localStorage.getItem("indicacaoFinalDeCurso"));
     console.log(flagFimCurso);
     var goToQuestionPage = true;
+    var goToHomeCoursePage = window.localStorage.getItem("goToHomeCoursePage");
     var currentScore = parseInt(window.localStorage.getItem("globalScore")); 
     var statusResposta ="";
     var descResposta ="";
@@ -314,12 +317,20 @@ function ($scope, $stateParams, $location, $ionicPopup) {
             window.localStorage.setItem("globalScore", currentScore);
             window.localStorage.setItem("progress", JSON.stringify(progress));
         }else{
-            statusResposta = "Acertou!";
             currentScore +=1;
             window.localStorage.setItem("globalScore", currentScore);
-            descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
-            buttonText = "Proxima pergunta";
-            imageResp = "img/acertou_bitcoin.png";
+            if(goToHomeCoursePage == 1){
+                statusResposta = "Fim do módulo!";             
+                descResposta = "Você finalizou este módulo! Ganhe um bitcoin e avance para o próximo curso. Seu saldo agora é de: "+ currentScore + "b$";
+                buttonText = "Próximo curso";
+                imageResp = "img/course_complete.jpg";
+            }else{
+                statusResposta = "Acertou!";             
+                descResposta = "Ganhe um bitcoin e avance para a proxima pergunta! Seu saldo agora é de: "+ currentScore + "b$";
+                buttonText = "Proxima pergunta";
+                imageResp = "img/acertou_bitcoin.png";     
+            }
+           
         }
 
     }else{
@@ -355,7 +366,14 @@ function ($scope, $stateParams, $location, $ionicPopup) {
                     window.localStorage.setItem("indicacaoFinalDeCurso", 0);
                     $location.path('/page');
                 }else{
-                    $location.path('/page2');    
+                    if(goToHomeCoursePage == 1){
+                        $location.path('/homeCourse');
+                        window.localStorage.setItem("goToHomeCoursePage", 0);
+                    }else{
+                        $location.path('/page2');    
+                    }
+
+                        
                 }
                 
             }else{
